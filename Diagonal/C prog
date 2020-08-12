@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct matrix
+{
+   int *A;
+    int n;
+};
+void set(struct matrix *m1,int i,int j,int x)
+{
+    if(i==j)
+    {
+        m1->A[i-1]=x;
+    }
+
+}
+int get(struct matrix m2,int i,int j)
+{
+    if(i==j)
+    {
+        return(m2.A[i-1]);
+
+    }
+    else
+        {
+        return 0;
+        }
+}
+void display(struct matrix m3)
+{
+ for(int i=0;i<m3.n;i++)
+ {
+     for(int j=0;j<m3.n;j++)
+     {
+         if(i==j)
+         {
+             printf("%d ",m3.A[i]);
+
+         }
+         else
+         {
+             printf("0 ");
+
+         }
+     }
+     printf("\n");
+
+ }
+}
+int main()
+{  int size=0;
+printf("Enter Size for your array\n");
+scanf("%d",&size);
+struct matrix m;
+m.A=(int*)malloc(size*sizeof(int));
+m.n=size;
+int i=1,j=1;//to set at 1,1
+set(&m,i,j,8);//setting 8 to 1,1
+set(&m,2,2,3);//setting 3 to 2,2
+set(&m,3,3,9);//setting 9  to 3,3
+int res=get(m,1,1);
+printf("%d\n",res);
+display(m);
+return 0;
+}
